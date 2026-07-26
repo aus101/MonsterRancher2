@@ -4,8 +4,8 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 public class MR2Errantry {
-	Tech phantomClaw = new Tech("Phantom Claw", false, "0.30", true);
-	Tech twisterClaw = new Tech("Twister Claw", false, "0.15", true);
+	Tech phantomClaw = new Tech("Phantom Claw", false, "0.40", true);//40%
+	Tech twisterClaw = new Tech("Twister Claw", false, "0.20", true);//20%
 	int[] attack1Record = new int[Util.STAGES];
 	int[] attack2Record = new int[Util.STAGES];
 
@@ -15,7 +15,7 @@ public class MR2Errantry {
 		
 		long start = System.nanoTime();
 		
-		for (int i = 0; i<Util.COUNT; i++) {
+		for (int i = 0; i<Util.getCount(); i++) {
 			e.phantomClaw.unlearn();
 			e.twisterClaw.unlearn();
 			
@@ -30,7 +30,7 @@ public class MR2Errantry {
 			}
 		}
 		long end = System.nanoTime();
-		String iterations = String.format("%,d", Util.COUNT) + " iterations";
+		String iterations = String.format("%,d", Util.getCount()) + " iterations";
 		System.out.println(Util.nanoToMinutesSeconds(end - start) + " to execute for " + iterations);
 		System.out.print(Util.newLine);
 		
@@ -47,6 +47,25 @@ public class MR2Errantry {
 }
 
 /*
+----
+
+3 minutes, 9 seconds to execute for 25,000,000 iterations
+40-20 with Auto-Learn
+
+Phantom Claw
+Stage 1: 10447538 = 41.79%
+Stage 2: 4720686 = 18.88%
+Stage 3: 2131862 = 8.52%
+Stage 4: 961148 = 3.84%
+Observed Learn Rate of 73.04%, Compared to Stage Learn Rate of 40.00%
+
+Twister Claw
+Stage 1: 3258082 = 13.03%
+Stage 2: 1473921 = 5.89%
+Stage 3: 665518 = 2.66%
+Stage 4: 300252 = 1.20%
+Observed Learn Rate of 22.79%, Compared to Stage Learn Rate of 20.00%
+
 ----
 
 4 minutes, 12 seconds to execute for 25,000,000 iterations

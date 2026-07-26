@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Util {
-	public static int COUNT = 25_000_000;
+	private static int COUNT = 25_000_000;
 	public static final int STAGES = 4;
 	
 	public final static int NANOSECONDS_IN_1_SECOND = 1_000_000_000;
@@ -36,6 +36,19 @@ public class Util {
 			System.out.println("Stage " + (i + 1) + ": " + attackRecord[i] + " = " + answer + "%");
 		}
 		return successes;
+	}
+	
+	public static int getCount() {
+		return COUNT;
+	}
+	
+	public static void setCount(int count) {
+		if (count > 0) {
+			COUNT = count;
+			COUNT_BD = new BigDecimal(COUNT);
+		} else {
+			System.err.println("Count must be greater than 0. Unchanged.");
+		}
 	}
 	
 	/**
