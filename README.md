@@ -5,6 +5,8 @@ The Errantry calculations to learn one tech are simple and show the true odds to
 
 I was able to spreadsheet out primary and secondary tech odds and simulate to back the odds up. This is the simulation. Now we can find what the odds of learning, say, Phantom Claw versus Twister Claw for Kato when Phantom Claw has priority and both have an auto-learn chance of 3%. If you want to see only one tech rolled for, put 0% ("0") in for the other. Spreadsheet coming soon. This code is really just meant for mathematical proof.
 
+The limitation is not being certain how the game handles percentages that are not integers when multiplied by 100. It most likely truncates given the precedent in damage calculation and combination formulas. Else it could round up after checking the remainder, considering 150 is a stat spread for techs alongside 100 and 200. PlayStation has no floating point math and no subroutine or function implementing it has been found.
+
 # Notice
 Not for distribution or use, or use or distribution of a derivative work on:     
 ```
