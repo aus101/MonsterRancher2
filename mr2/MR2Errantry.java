@@ -4,6 +4,8 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 public class MR2Errantry {
+	final boolean truncate = true;
+	final boolean doNotTruncate = false;
 	Tech phantomClaw = new Tech("Phantom Claw", false, "0.40", true);//40%
 	Tech twisterClaw = new Tech("Twister Claw", false, "0.20", true);//20%
 	int[] attack1Record = new int[Util.STAGES];
@@ -20,10 +22,10 @@ public class MR2Errantry {
 			e.twisterClaw.unlearn();
 			
 			for (int stage=1; stage <= Util.STAGES; stage++) {
-				if (e.phantomClaw.tryOneStage(r)) {
+				if (e.phantomClaw.tryOneStageRNGBias(r)) {
 					e.attack1Record[stage - 1]++;
 					break;
-				} else if (e.twisterClaw.tryOneStage(r)) {
+				} else if (e.twisterClaw.tryOneStageRNGBias(r)) {
 					e.attack2Record[stage - 1]++;
 					break;
 				}
@@ -49,22 +51,43 @@ public class MR2Errantry {
 /*
 ----
 
-3 minutes, 9 seconds to execute for 25,000,000 iterations
-40-20 with Auto-Learn
+40-20 with Auto-Learn and RNG Bias
+
+3 minutes, 8 seconds to execute for 50,000,000 iterations
 
 Phantom Claw
-Stage 1: 10447538 = 41.79%
-Stage 2: 4720686 = 18.88%
-Stage 3: 2131862 = 8.52%
-Stage 4: 961148 = 3.84%
-Observed Learn Rate of 73.04%, Compared to Stage Learn Rate of 40.00%
+Stage 1: 21052146 = 42.10%
+Stage 2: 9404706 = 18.80%
+Stage 3: 4205405 = 8.41%
+Stage 4: 1879440 = 3.75%
+Observed Learn Rate of 73.08%, Compared to Stage Learn Rate of 40.00%
 
 Twister Claw
-Stage 1: 3258082 = 13.03%
-Stage 2: 1473921 = 5.89%
-Stage 3: 665518 = 2.66%
-Stage 4: 300252 = 1.20%
-Observed Learn Rate of 22.79%, Compared to Stage Learn Rate of 20.00%
+Stage 1: 6602575 = 13.20%
+Stage 2: 2952068 = 5.90%
+Stage 3: 1318097 = 2.63%
+Stage 4: 589978 = 1.17%
+Observed Learn Rate of 22.92%, Compared to Stage Learn Rate of 20.00%
+
+----
+
+40-20 with Auto-Learn
+
+6 minutes, 8 seconds to execute for 50,000,000 iterations
+
+Phantom Claw
+Stage 1: 20902289 = 41.80%
+Stage 2: 9438313 = 18.87%
+Stage 3: 4265201 = 8.53%
+Stage 4: 1924484 = 3.84%
+Observed Learn Rate of 73.06%, Compared to Stage Learn Rate of 40.00%
+
+Twister Claw
+Stage 1: 6517076 = 13.03%
+Stage 2: 2941653 = 5.88%
+Stage 3: 1329351 = 2.65%
+Stage 4: 600233 = 1.20%
+Observed Learn Rate of 22.77%, Compared to Stage Learn Rate of 20.00%
 
 ----
 

@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Util {
-	private static int COUNT = 25_000_000;
+	private static int COUNT = 5_000_000;
 	public static final int STAGES = 4;
 	
 	public final static int NANOSECONDS_IN_1_SECOND = 1_000_000_000;
